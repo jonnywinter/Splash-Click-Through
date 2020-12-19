@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+    Using:
+    https://bootswatch.com/lux/
+    https://developer.cisco.com/meraki/build/captive-portal-with-client-side-javascript/
+    https://github.com/dexterlabora/excap-clientjs/blob/master/public/index.html
+    https://bootsnipp.com/tags/login
+    https://mdbootstrap.com/docs/standard/forms/validation/
+    https://getbootstrap.com/docs/4.1/components/forms/
+    https://www.w3schools.com/howto/howto_css_full_page.asp
+    -- view-source:https://www.w3schools.com/howto/tryhow_css_halfpage_demo.htm
+    https://stackoverflow.com/questions/31554574/html-padding-style
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="bgimg-1">
+            <div class="caption">
+                <span class="border">MY COMPANY - UK BRANCH</span>
+            </div>
+        </div>
+        <div class="container">
+            <br>
+            <div class="row mgTp">
+                <form class="col-md-6 offset-md-3">
+                    <center>
+                        <h3 class="title">Welcome to our Guest Wi-Fi</h3>
+                        <p>Provided to you for free by Focus Group.</p>
+                    </center>
+                    <hr class="divisor">
+                    <div class="row g-3">
+                        <div class="col">
+                            <label for="validationCustom01" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required/>
+                        </div>
+                        <div class="col">
+                            <label for="validationCustom02" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label for="exampleInputEmail1" style="padding-top: 20px">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="checkbox" value="" id="invalidCheck" required/>
+                            <label class="form-check-label" for="invalidCheck" style="padding-top: 20px; padding-bottom: 20px">Click here to agree to our <a href="https://sites.google.com/site/wifitermsgeneric/">terms & conditions</a>.</label>
+                            <div class="invalid-feedback">You must agree before submitting.</div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">Continue</button>
+                        </div>
+                    </div>
+                    <div class="container" style="font-size: small;">
+                        <p>
+                            <center>
+                              Created by Jonny Winter <b>//</b> jonny.winter@focusgroup.co.uk
+                              <br>
+                              <a href="https://www.focusgroup.co.uk/enterprise-networks">Focus Group - Enterprise Networks</a>
+                            </center>
+                          </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font: 400 15px/1.8 "Lato", sans-serif;
+          color: #777;
+        }
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+          position: relative;
+          opacity: 0.65;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .bgimg-1 {
+          background-image: url("123.jpg");
+          height: 40%;
+        }
+        .caption {
+          position: absolute;
+          left: 0;
+          top: 40%;
+          width: 100%;
+          text-align: center;
+          color: #000;
+        }
+        .caption span.border {
+          background-color: #111;
+          color: #fff;
+          padding: 18px;
+          font-size: 25px;
+          letter-spacing: 10px;
+        }
+        h3 {
+          letter-spacing: 5px;
+          text-transform: uppercase;
+          font: 20px "Lato", sans-serif;
+          color: #111;
+        }
+    </style>
+</html>
