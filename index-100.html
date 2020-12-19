@@ -44,7 +44,7 @@
             <br>
             <div class="row mgTp">
                 <form class="col-md-6 offset-md-3" style="background-color:snow; 
-                padding-top: 30px; padding-bottom: 5px;opacity: 0.90;">
+                padding-top: 30px; padding-bottom: 5px;opacity: 0.90;" id="loginForm">
                     <center>
                         <h3 class="title" style="letter-spacing: 5px;
                         text-transform: uppercase;font: 20px 'Lato', sans-serif;
@@ -55,17 +55,17 @@
                     <div class="row g-3">
                         <div class="col">
                             <label for="validationCustom01" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required/>
+                            <input type="text" class="form-control" id="firstName" placeholder="First name" required/>
                         </div>
                         <div class="col">
                             <label for="validationCustom02" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" required/>
+                            <input type="text" class="form-control" id="lastName" placeholder="Last name" required/>
                         </div>
                     </div>
                     <div class="row g-3">
                         <div class="col">
                             <label for="exampleInputEmail1" style="padding-top: 20px">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required/>
+                            <input type="email" class="form-control" id="emailAddress" aria-describedby="emailHelp" placeholder="Enter email" required/>
                         </div>
                     </div>
                     <div class="row">
@@ -101,11 +101,15 @@
                                 <h3 class="modal-title">Debugging Stats</h3>
                             </div>
                             <div class="modal-body">
-                                <p><label>Base Grant URL: </label><label id="baseGrantURL"></label></p>
-                                <p><label>User Continue URL: </label><label id="userContinueURL"></label></p>
-                                <p><label>Client IP: </label><label id="clientIP"></label></p>
-                                <p><label>Client MAC: </label><label id="clientMAC"></label></p>
-                                <p><label>Access Point MAC: </label><label id="nodeMAC"></label></p>
+                                <a><label style="font-weight: bold;">Base Grant URL:&nbsp</label><label id="baseGrantURL"></label></a>
+                                <br>
+                                <a><label style="font-weight: bold;">User Continue URL:&nbsp</label><label id="userContinueURL"></label></a>
+                                <br>
+                                <a><label style="font-weight: bold;">Client IP:&nbsp</label><label id="clientIP"></label></a>
+                                <br>
+                                <a><label style="font-weight: bold;">Client MAC:&nbsp</label><label id="clientMAC"></label></a>
+                                <br>
+                                <a><label style="font-weight: bold;">Access Point MAC:&nbsp</label><label id="nodeMAC"></label></a> 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -131,7 +135,6 @@
                 }
             }
         }
-
         // Parse paramaters
         //base_grant_url
         if (sessionStorage.getItem("base_grant_url_persistent") === null) {
@@ -140,6 +143,7 @@
         } else {
             var base_grant_url = sessionStorage.getItem("base_grant_url_persistent")
         }
+        document.getElementById("baseGrantURL").innerHTML = base_grant_url;
         // user_continue_url
         if (sessionStorage.getItem("user_continue_url_persistent") === null) {
             var user_continue_url = decodeURIComponent(GetURLParameter("user_continue_url"));
@@ -147,6 +151,7 @@
         } else {
             var user_continue_url = sessionStorage.getItem("user_continue_url_persistent")
         }
+        document.getElementById("userContinueURL").innerHTML = user_continue_url;
         // node_mac
         if (sessionStorage.getItem("node_mac_persistent") === null) {
             var node_mac = GetURLParameter("node_mac");
@@ -154,6 +159,7 @@
         } else {
             var node_mac = sessionStorage.getItem("node_mac_persistent")
         }
+        document.getElementById("nodeMAC").innerHTML = node_mac;
         // client_ip
         if (sessionStorage.getItem("client_ip_persistent") === null) {
             var client_ip = GetURLParameter("client_ip");
@@ -161,6 +167,7 @@
         } else {
             var client_ip = sessionStorage.getItem("client_ip_persistent")
         }
+        document.getElementById("clientIP").innerHTML = client_ip;
         // client_mac
         if (sessionStorage.getItem("client_mac_persistent") === null) {
             var client_mac = GetURLParameter("client_mac");
@@ -168,19 +175,10 @@
         } else {
             var client_mac = sessionStorage.getItem("client_mac_persistent")
         }
-        
-        console.log("base_grant_url: "+base_grant_url);
-        //console.log("base_grant_url_persistent: "+base_grant_url_persistent);
-        console.log(sessionStorage);
-        console.log("user_continue_url: "+user_continue_url);
-        console.log("client_ip: "+client_ip);
-        document.getElementById("baseGrantURL").innerHTML = base_grant_url;
-        document.getElementById("userContinueURL").innerHTML = user_continue_url;
-        document.getElementById("clientIP").innerHTML = client_ip;
         document.getElementById("clientMAC").innerHTML = client_mac;
-        document.getElementById("nodeMAC").innerHTML = node_mac;
-
-
+        console.log(sessionStorage);
+    </script>
+    <script>
         //put the stuff JONNY
         function getURLParameter(name) {
             return decodeURI((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]);
@@ -194,8 +192,35 @@
                 }
             }
         }
-
         //Run onload, you can do this yourself if you want to do it a different way
         window.onload = hideURLParams;
+    </script>
+    <script>
+        // Form Submit handler. 
+        document.getElementById('loginForm').onsubmit= function(e){
+            e.preventDefault(); //prevents default form submission process to allow login and validation
+            login();
+        }
+        function authUser(){
+            var loginUrl = base_grant_url;
+            if(user_continue_url !== "undefined"){
+                loginUrl += "?continue_url="+user_continue_url;
+            }
+            console.log("Logging in... ",loginUrl);
+            // redirect browser to meraki auth URL.
+            window.location.href = loginUrl;
+        }
+        // Button handler function to store the form data and login. 
+        function login(){
+            // send the data somewhere like a database
+            var data = {};
+            data.firstName = document.getElementById("firstName").value;
+            data.lastName = document.getElementById("firstName").value;
+            data.emailAddress = document.getElementById("emailAddress").value;
+            //alert("Hello "+data.firstName + " "+data.lastName+"\n"+"Thanks for providing your email: "+data.emailAddress);
+            //console.log("Storing data to db...", data);
+            // Complete Login
+            authUser();
+        }
     </script>
 </html>
