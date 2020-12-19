@@ -1,1 +1,1 @@
-# Splash-Click-Through
+# Splash Page (Click-through)
