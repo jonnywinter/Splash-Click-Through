@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="custom-body">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/css.css">
+        <script src="./js/jquery-3.5.1.slim.min.js"></script>
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body class="custom-body">
+        <div class="bgimg-40">
+            <div class="custom-div-40">
+                <span class="border custom-span">MY COMPANY</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mgTp">
+                <form class="col-md-6 offset-md-3 custom-form-40" id="loginForm">
+                    <center>
+                        <h3 class="title custom-h3">Welcome to our Guest Wi-Fi</h3>
+                        <p>Provided to you for free by Focus Group.</p>
+                    </center>
+                    <hr class="divisor">
+                    <div class="row g-3">
+                        <div class="col">
+                            <label for="firstName" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First name" required/>
+                        </div>
+                        <div class="col">
+                            <label for="lastName" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Last name" required/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label for="emailAddress" class="email-address">Email address</label>
+                            <input type="email" class="form-control" id="emailAddress" aria-describedby="emailHelp" placeholder="Enter email" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="checkbox" value="" id="invalidCheck" required/>
+                            <label class="form-check-label terms-and-conditions" for="invalidCheck">Click here to agree to our 
+                                <a href="https://sites.google.com/site/wifitermsgeneric/">terms & conditions</a>.
+                            </label>
+                            <div class="invalid-feedback">You must agree before submitting.</div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">Continue</button>
+                        </div>
+                    </div>
+                    <div class="container sign-off">
+                        <p>
+                            <center>
+                              Created by Jonny Winter <b>//</b> jonny.winter@focusgroup.co.uk
+                              <br>
+                              <a href="https://www.focusgroup.co.uk/enterprise-networks">Focus Group - Enterprise Networks</a>
+                              <br>
+                              <a href="#" data-toggle="modal" data-target="#myModal">Diagnostics</a>
+                            </center>
+                          </p>
+                    </div>
+                </form>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Debugging Stats</h3>
+                            </div>
+                            <div class="modal-body">
+                                <a><label class="modal-bold">Base Grant URL:&nbsp</label><label id="baseGrantURL"></label></a>
+                                <br>
+                                <a><label class="modal-bold">User Continue URL:&nbsp</label><label id="userContinueURL"></label></a>
+                                <br>
+                                <a><label class="modal-bold">Client IP:&nbsp</label><label id="clientIP"></label></a>
+                                <br>
+                                <a><label class="modal-bold">Client MAC:&nbsp</label><label id="clientMAC"></label></a>
+                                <br>
+                                <a><label class="modal-bold">Access Point MAC:&nbsp</label><label id="nodeMAC"></label></a> 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./js/js.js"></script>
+    </body>
+</html>
